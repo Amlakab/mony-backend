@@ -10,11 +10,11 @@ interface CollectionSocket extends Socket {
 }
 
 const noteImages: Record<number, string> = {
-  5: '/notes/5birr.png',
-  10: '/notes/10birr.png',
-  50: '/notes/50birr.png',
-  100: '/notes/100birr.png',
-  200: '/notes/200birr.png'
+  5: '/notes/5birr.jpeg',
+  10: '/notes/10birr.jpeg',
+  50: '/notes/50birr.jpeg',
+  100: '/notes/100birr.jpeg',
+  200: '/notes/200birr.jpeg'
 };
 
 const getNoteBreakdown = (amount: number): Array<{ noteType: number; targetBox: string; image: string }> => {
