@@ -9,15 +9,18 @@ interface CollectionSocket extends Socket {
   user?: any;
 }
 
-const noteImages: Record<number, string> = {
-  5: '/notes/5birr.jpeg',
-  10: '/notes/10birr.jpeg',
-  50: '/notes/50birr.jpeg',
-  100: '/notes/100birr.jpeg',
-  200: '/notes/200birr.jpeg'
-};
+// const noteImages: Record<number, string> = {
+//   5: '/notes/5birr.jpeg',
+//   10: '/notes/10birr.jpeg',
+//   50: '/notes/50birr.jpeg',
+//   100: '/notes/100birr.jpeg',
+//   200: '/notes/200birr.jpeg'
+// };
 
-const getNoteBreakdown = (amount: number): Array<{ noteType: number; targetBox: string; image: string }> => {
+// Remove the noteImages from backend
+// Only send the amount and note type
+
+const getNoteBreakdown = (amount: number): Array<{ noteType: number; targetBox: string }> => {
   const breakdown = [];
   let remaining = amount;
   const noteValues = [200, 100, 50, 10, 5];
@@ -26,8 +29,8 @@ const getNoteBreakdown = (amount: number): Array<{ noteType: number; targetBox: 
     while (remaining >= noteValue) {
       breakdown.push({
         noteType: noteValue,
-        targetBox: `box_${noteValue}`,
-        image: noteImages[noteValue]
+        targetBox: `box_${noteValue}`
+        // NO IMAGE PATH HERE
       });
       remaining -= noteValue;
     }
