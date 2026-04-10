@@ -71,68 +71,6 @@ router.delete('/:id', authenticate, authorize('admin'), async (req, res) => {
   }
 });
 
-// Delete deposit transaction
-router.delete('/deposit/:id', authenticate, authorize('admin'), async (req, res) => {
-  try {
-    const transaction = await Transaction.findById(req.params.id);
-    if (!transaction) {
-      return res.status(404).json({
-        success: false,
-        message: 'Transaction not found'
-      });
-    }
-    
-    // if (transaction.type !== 'deposit') {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: 'This is not a deposit transaction'
-    //   });
-    // }
-    
-    await transaction.deleteOne();
-    
-    res.json({
-      success: true,
-      message: 'Deposit transaction deleted successfully'
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
-  }
-});
 
-// Delete withdrawal transaction
-router.delete('/withdrawal/:id', authenticate, authorize('admin'), async (req, res) => {
-  try {
-    const transaction = await Transaction.findById(req.params.id);
-    if (!transaction) {
-      return res.status(404).json({
-        success: false,
-        message: 'Transaction not found'
-      });
-    }
-    
-    // if (transaction.type !== 'withdrawal') {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: 'This is not a withdrawal transaction'
-    //   });
-    // }
-    
-    await transaction.deleteOne();
-    
-    res.json({
-      success: true,
-      message: 'Withdrawal transaction deleted successfully'
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
-  }
-});
 
 export default router;
